@@ -1,0 +1,66 @@
+.measureSection
+  background: url("img/measure_main.png") no-repeat center/contain
+  width: 75%
+  height: 60%
+  margin: 0 auto 10px
+
+.measureSection__inner
+  width: 73px
+  height: 100%
+  margin: 0 auto
+  padding-top: 25px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+
+.measureSection__diamond
+  width: 100%
+  height: 47px
+  background: linear-gradient(180deg, #b676cb , rgba(255, 255, 255, 0))
+  border-radius: 4px 4px 0 0
+  text-align: center
+
+.measureSection__scaleItem
+  position: relative
+  align-self: stretch
+  &:before
+    content: ''
+    position: absolute
+    height: 3px
+    top: 2px
+    left: 1px
+    right: 2px
+    background: #fff
+    opacity: .3
+  &:after
+    content: ''
+    position: absolute
+    width: 3px
+    top: 2px
+    right: 2px
+    bottom: 2px
+    background: #fff
+    opacity: .3
+  &:nth-of-type(2)
+    height: 18px
+    background: #d1defb
+    border-radius: 4px 4px 0 0
+  &:nth-of-type(3)
+    height: 23px
+    background: #b7c8ed
+  &:nth-of-type(4)
+    height: 28px
+    background: #94aadc
+  &:nth-of-type(5)
+    height: 33px
+    background: #7593d6
+  &:nth-of-type(6)
+    height: 38px
+    background: #5878be
+  &:nth-of-type(7)
+    height: 43px
+    background: #3a5ca5
+  &:nth-of-type(8)
+    height: 48px
+    background: #254b9d
