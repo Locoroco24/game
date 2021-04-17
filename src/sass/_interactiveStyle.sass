@@ -1,5 +1,8 @@
+$animationTime: .4s
+
 .interactiveSection
   position: relative
+  min-height: 165px
 
 .interactiveSection__scale
   position: absolute
@@ -7,12 +10,33 @@
   bottom: 0
   width: 40px
   height: 147px
+  background: url("/src/img/scale.png") no-repeat center/contain
+  box-shadow: 0 6px 6px -3px #080b3a
 
 .interactiveSection__scaleImg
-  width: 100%
+  position: relative
+  left: 3px
+  right: 3px
   height: 100%
-  object-fit: fill
-  box-shadow: 0 6px 6px -3px #080b3a
+  z-index: 100
+
+.interactiveSection__scaleLevel
+  position: absolute
+  bottom: 3px
+  left: 3px
+  right: 3px
+  border-radius: 2px
+  background: #00d355
+  z-index: 10
+  &:before
+    content: ''
+    position: absolute
+    width: 48px
+    height: 3px
+    top: 0
+    left: -7px
+    border-radius: 2px
+    background: #fff
 
 .interactiveSection__inner
   width: 172px
@@ -24,17 +48,26 @@
 
 .interactiveSection__btnImg
   width: 124px
+  height: 70px
   margin-bottom: 10px
+  background: url("img/button.png") no-repeat center/contain
+  transition-delay: $animationTime
+
+.interactiveSection__btnImg_active
+  @extend .interactiveSection__btnImg
+  background-image: url("img/button_active.png")
 
 .interactiveSection__text
   text-align: center
-  margin-bottom: 13px
+  &:last-of-type
+    margin-bottom: 13px
 
 .interactiveSection__interactiveBtn
   width: 100%
   padding: 10px 0
   border: 1px solid #fff
   border-radius: 4px
+  outline: none
   background: #ff42e0
   text-align: center
   text-transform: uppercase
@@ -43,7 +76,19 @@
   font-weight: 700
   color: #fff
   box-shadow: 0 6px 6px -3px #080b3a
+  transition: $animationTime
+  &:hover
+    cursor: pointer
+    opacity: .8
 
+.interactiveSection__interactiveBtn_active
+  @extend .interactiveSection__interactiveBtn
+  background: #ffdf35
+  color: #bb20a2
+
+.interactiveSection__interactiveBtn_inactive
+  @extend .interactiveSection__interactiveBtn
+  display: none
 
 .interactiveSection__hammerImg
   width: 35%
@@ -51,10 +96,30 @@
   top: -40px
   right: 50px
   transform: rotate(-45deg)
+  transition: $animationTime ease-in
+
+.interactiveSection__hammerImg_active
+  @extend .interactiveSection__hammerImg
+  top: -80px
+  right: 20px
+  transform: none
+
+.interactiveSection__hammerImg_hit
+  @extend .interactiveSection__hammerImg
+  top: -60px
+  right: 85px
+  transform: rotate(-90deg)
 
 .interactiveSection__robotImg
   position: absolute
   width: 70px
+  height: 86px
   right: 13px
   bottom: 0
   box-shadow: 0 6px 6px -4px #080b3a
+  background: url("img/robot_1.png") no-repeat center/contain
+  transition: $animationTime
+
+.interactiveSection__robotImg_active
+  @extend .interactiveSection__robotImg
+  background: url("img/robot_2.png") no-repeat center/contain

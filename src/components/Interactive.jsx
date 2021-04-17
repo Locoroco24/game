@@ -1,24 +1,55 @@
-import scale from "../img/scale.png";
+import scale from "../img/scale-1.png";
 import button from "../img/button.png";
 import hammer from "../img/hammer.png";
-import robot from "../img/robot_1.png";
+import {connect} from "react-redux";
+import {buttonClick} from "../store/actions";
 
-function InteractiveComponent() {
+function InteractiveComponent({
+    BtnImgState,
+    interactiveBtnState,
+    hammerState,
+    robotState,
+    textTitle,
+    textSubtitle,
+    scaleHeight,
+    buttonClick
+  }) {
+
   return (
     <div className='interactiveSection'>
       <div className='interactiveSection__scale'>
         <img src={scale} alt='Шкала' className='interactiveSection__scaleImg' />
-        <div className='interactiveSection__scaleLevel' />
+        <div className='interactiveSection__scaleLevel' style={scaleHeight} />
       </div>
-      <img src={robot} alt='Робот' className='interactiveSection__robotImg' />
+      <div className={robotState.style} />
       <div className='interactiveSection__inner'>
-        <img src={button} alt='Кнопка' className='interactiveSection__btnImg' />
-        <p className='interactiveSection__text'>Привет! Проверим твою силу</p>
-        <button className='interactiveSection__interactiveBtn'>Новая игра</button>
-        <img src={hammer} alt='Молоток' className='interactiveSection__hammerImg' />
+        <div className={BtnImgState.style} />
+        <p className='interactiveSection__text'>{textTitle}</p>
+        <p className='interactiveSection__text'>{textSubtitle}</p>
+        <button
+          className={interactiveBtnState.style}
+          onClick={buttonClick}
+        >
+          {interactiveBtnState.text}
+        </button>
+        <img src={hammer} alt='Молоток' className={hammerState.style} />
       </div>
     </div>
   );
 }
 
-export default InteractiveComponent;
+const mapStateToProps = state => ({
+  BtnImgState: state.BtnImgState,
+  interactiveBtnState: state.interactiveBtnState,
+  hammerState: state.hammerState,
+  robotState: state.robotState,
+  textTitle: state.textTitle,
+  textSubtitle: state.textSubtitle,
+  scaleHeight: state.scaleHeight
+})
+
+const mapDispatchToProps = {
+  buttonClick
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InteractiveComponent);
