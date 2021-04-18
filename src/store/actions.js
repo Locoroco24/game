@@ -1,4 +1,4 @@
-import {HAMMER_HIT, NEW_GAME, SCALE_MOVING, START_GAME} from "./types";
+import {HAMMER_HIT, NEW_GAME, SCALE_MOVING, START_GAME} from './types';
 
 let scaleHeight = 0;
 let intervalID;
@@ -106,7 +106,7 @@ export function buttonClick(event)  {
             }
           });
         }
-        scaleHeight = 0
+        scaleHeight = 0;
       }, 800);
     }
   };

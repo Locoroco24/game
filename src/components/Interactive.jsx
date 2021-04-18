@@ -1,8 +1,8 @@
-import scale from "../img/scale-1.png";
-import button from "../img/button.png";
-import hammer from "../img/hammer.png";
-import {connect} from "react-redux";
-import {buttonClick} from "../store/actions";
+import scale from '../img/scale-1.png';
+import button from '../img/button.png';
+import hammer from '../img/hammer.png';
+import {connect} from 'react-redux';
+import {buttonClick} from '../store/actions';
 
 function InteractiveComponent({
     BtnImgState,
@@ -46,10 +46,10 @@ const mapStateToProps = state => ({
   title: state.title,
   subtitle: state.subtitle,
   scaleHeight: state.scaleHeight
-})
+});
 
 const mapDispatchToProps = {
   buttonClick
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(InteractiveComponent);

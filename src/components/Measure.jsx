@@ -1,10 +1,10 @@
-import {connect} from "react-redux";
-import diamond from "../img/diamond.png"
-import winEffectImg from "../img/layer_glow.png"
+import {connect} from 'react-redux';
+import diamond from '../img/diamond.png';
+import winEffectImg from '../img/layer_glow.png';
 
 function MeasureComponent({score, winEffect}) {
 
-  let measureArray = [1, 2, 3, 4, 5, 6, 7]
+  let measureArray = [1, 2, 3, 4, 5, 6, 7];
 
   return (
     <div className='measureSection'>
@@ -26,6 +26,6 @@ function MeasureComponent({score, winEffect}) {
 const mapStateToProps = state => ({
   score: state.score,
   winEffect: state.winEffect
-})
+});
 
 export default connect(mapStateToProps)(MeasureComponent);

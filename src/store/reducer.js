@@ -1,4 +1,4 @@
-import {HAMMER_HIT, NEW_GAME, SCALE_MOVING, START_GAME} from "./types";
+import {HAMMER_HIT, NEW_GAME, SCALE_MOVING, START_GAME} from './types';
 
 export const initialState = {
   BtnImgState: 'interactiveSection__btnImg',
@@ -62,4 +62,4 @@ export const reducer = (state = initialState, action) => {
     }
     default: return state
   }
-}
+};
