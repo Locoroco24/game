@@ -9,8 +9,8 @@ function InteractiveComponent({
     interactiveBtnState,
     hammerState,
     robotState,
-    textTitle,
-    textSubtitle,
+    title,
+    subtitle,
     scaleHeight,
     buttonClick
   }) {
@@ -19,20 +19,20 @@ function InteractiveComponent({
     <div className='interactiveSection'>
       <div className='interactiveSection__scale'>
         <img src={scale} alt='Шкала' className='interactiveSection__scaleImg' />
-        <div className='interactiveSection__scaleLevel' style={scaleHeight} />
+        <div className='interactiveSection__scaleLevel' style={{height: scaleHeight}} />
       </div>
-      <div className={robotState.style} />
+      <div className={robotState} />
       <div className='interactiveSection__inner'>
-        <div className={BtnImgState.style} />
-        <p className='interactiveSection__text'>{textTitle}</p>
-        <p className='interactiveSection__text'>{textSubtitle}</p>
+        <div className={BtnImgState} />
+        <p className={title.style}>{title.text}</p>
+        <p className={subtitle.style}>{subtitle.text}</p>
         <button
           className={interactiveBtnState.style}
           onClick={buttonClick}
         >
           {interactiveBtnState.text}
         </button>
-        <img src={hammer} alt='Молоток' className={hammerState.style} />
+        <img src={hammer} alt='Молоток' className={hammerState} />
       </div>
     </div>
   );
@@ -43,8 +43,8 @@ const mapStateToProps = state => ({
   interactiveBtnState: state.interactiveBtnState,
   hammerState: state.hammerState,
   robotState: state.robotState,
-  textTitle: state.textTitle,
-  textSubtitle: state.textSubtitle,
+  title: state.title,
+  subtitle: state.subtitle,
   scaleHeight: state.scaleHeight
 })
 

@@ -1,4 +1,4 @@
-import {HAMMER_HIT, SCALE_MOVING, START_GAME} from "./types";
+import {HAMMER_HIT, NEW_GAME, SCALE_MOVING, START_GAME} from "./types";
 
 let scaleHeight = 0;
 let intervalID;
@@ -11,13 +11,26 @@ export function buttonClick(event)  {
     if (!isGameActive) {
       dispatch ({
         type: START_GAME,
+        BtnImgState: 'interactiveSection__btnImg',
         interactiveBtnState: {
           text: 'Удар!',
           style: 'interactiveSection__interactiveBtn_active'
         },
-        hammerState: {style: 'interactiveSection__hammerImg_active'},
-        textTitle: 'Жми на кнопку',
-        textSubtitle: 'в нужный момент!'
+        hammerState: 'interactiveSection__hammerImg_active',
+        robotState: 'interactiveSection__robotImg',
+        title: {
+          text: 'Жми на кнопку',
+          style: 'interactiveSection__text'
+        },
+        subtitle: {
+          text: 'в нужный момент!',
+          style: 'interactiveSection__text'
+        },
+        score: 0,
+        winEffect: {
+          diamond: 'winEffect',
+          background: 'measureSection__diamond'
+        }
       });
 
       let isIncrease = true;
@@ -29,21 +42,72 @@ export function buttonClick(event)  {
         if (scaleHeight === 0 && !isIncrease) isIncrease = true;
         dispatch({
           type: SCALE_MOVING,
-          scaleHeight: {height: scaleHeight + 'px'}
+          scaleHeight: scaleHeight + 'px'
         });
-      }, 5);
+      }, 10);
     } else {
       clearInterval(intervalID)
       dispatch ({
         type: HAMMER_HIT,
-        BtnImgState: {style: 'interactiveSection__btnImg_active'},
+        BtnImgState: 'interactiveSection__btnImg_active',
         interactiveBtnState: {style: 'interactiveSection__interactiveBtn_inactive'},
-        hammerState: {style: 'interactiveSection__hammerImg_hit'},
-        robotState: {style: 'interactiveSection__robotImg_active'},
-        textTitle: '',
-        textSubtitle: '',
-        score: scaleHeight
-      })
+        hammerState: 'interactiveSection__hammerImg_hit',
+        robotState: 'interactiveSection__robotImg_active',
+        title: {
+          text: '',
+          style: 'interactiveSection__text'
+        },
+        subtitle: {
+          text: '',
+          style: 'interactiveSection__text'
+        },
+        score: scaleHeight / 20
+      });
+      setTimeout(() => {
+        if (scaleHeight / 20 < 7) {
+          dispatch({
+            type: NEW_GAME,
+            interactiveBtnState: {
+              text: 'Новая игра!',
+              style: 'interactiveSection__interactiveBtn'
+            },
+            robotState: 'interactiveSection__robotImg_active',
+            title: {
+              text: 'Неплохо!',
+              style: 'interactiveSection__text'
+            },
+            subtitle: {
+              text: 'Попробуй еще раз.',
+              style: 'interactiveSection__text'
+            },
+            winEffect: {
+              diamond: 'winEffect',
+              background: 'measureSection__diamond'
+            }
+          });
+        } else {
+          dispatch({
+            type: NEW_GAME,
+            interactiveBtnState: {
+              text: 'Новая игра!',
+              style: 'interactiveSection__interactiveBtn'
+            },
+            robotState: 'interactiveSection__robotImg_onWin',
+            title: {
+              text: 'ВОТ ЭТО СИЛА!',
+              style: 'interactiveSection__text_onWIn'},
+            subtitle: {
+              text: 'Ты выбил главный приз!',
+              style: 'interactiveSection__text_onWIn'
+            },
+            winEffect: {
+              diamond: 'winEffect_active',
+              background: 'measureSection__diamond_winEffect'
+            }
+          });
+        }
+        scaleHeight = 0
+      }, 800);
     }
   };
 }

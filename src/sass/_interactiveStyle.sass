@@ -1,22 +1,19 @@
-$animationTime: .4s
-
 .interactiveSection
   position: relative
-  min-height: 165px
+  min-height: 164px
 
 .interactiveSection__scale
   position: absolute
   left: 23px
   bottom: 0
   width: 40px
-  height: 147px
-  background: url("/src/img/scale.png") no-repeat center/contain
+  height: 146px
+  background: url("/src/img/scale.png") no-repeat center/cover
   box-shadow: 0 6px 6px -3px #080b3a
 
 .interactiveSection__scaleImg
   position: relative
-  left: 3px
-  right: 3px
+  left: 4px
   height: 100%
   z-index: 100
 
@@ -51,9 +48,10 @@ $animationTime: .4s
   height: 70px
   margin-bottom: 10px
   background: url("img/button.png") no-repeat center/contain
-  transition-delay: $animationTime
+  transition-delay: $animationTime / 2
 
 .interactiveSection__btnImg_active
+  transition-delay: $animationTime
   @extend .interactiveSection__btnImg
   background-image: url("img/button_active.png")
 
@@ -61,6 +59,22 @@ $animationTime: .4s
   text-align: center
   &:last-of-type
     margin-bottom: 13px
+
+.interactiveSection__text_onWIn
+  @extend .interactiveSection__text
+  &:first-of-type
+    margin-top: -10px
+  &:last-of-type
+    position: relative
+    width: 110%
+    margin-bottom: 23px
+    &:after
+      content: 'Рубин'
+      position: absolute
+      left: 50%
+      bottom: -16px
+      transform: translateX(-50%)
+      color: #f00
 
 .interactiveSection__interactiveBtn
   width: 100%
@@ -113,13 +127,28 @@ $animationTime: .4s
 .interactiveSection__robotImg
   position: absolute
   width: 70px
-  height: 86px
+  height: 85px
   right: 13px
   bottom: 0
-  box-shadow: 0 6px 6px -4px #080b3a
   background: url("img/robot_1.png") no-repeat center/contain
-  transition: $animationTime
+  &:after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    height: 10px
+    box-shadow: 0 6px 6px -3px #080b3a
 
 .interactiveSection__robotImg_active
   @extend .interactiveSection__robotImg
   background: url("img/robot_2.png") no-repeat center/contain
+
+.interactiveSection__robotImg_onWin
+  @extend .interactiveSection__robotImg
+  width: 83px
+  right: 7px
+  background: url("img/robot_3.png") no-repeat center/contain
+  &:after
+    left: 6px
+    right: 6px
